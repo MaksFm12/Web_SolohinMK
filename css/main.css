@@ -12,7 +12,7 @@ html {
 }
 
 body{
-    margin: 0 0 0 20%;
+    margin: 0 15% 0 20%;
     font-family: "Roboto", sans-serif;
     
 }    
@@ -28,8 +28,10 @@ h2{
 
 nav{
     margin-left: -20px;
-    padding: 30px 40px 40px 0;
-    
+    padding-right: 700px;
+    padding-bottom: 30px;
+    display: flex;
+    align-items: center;
 }
 
 nav a{
@@ -52,7 +54,7 @@ a:hover {
 }
 
 
-img{
+.main-img{
     width: 1000px;
     height: auto;
 }
@@ -83,7 +85,7 @@ th, td{
 
 footer{
     background-color: #000;
-    margin: 0 0 0 -25%;
+    margin: 0 -23.1% 0 -31%;
     height: 100px;
 }
 
@@ -91,4 +93,176 @@ footer p, footer a{
     color: white;
     padding: 30px 0 30px 180px
     
+}
+
+
+
+
+/*===========================================Lunch.html===================================================*/
+
+
+.lunch-section h2{
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.lunch-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 80px;
+
+}
+
+.lunch-card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 16px;
+    filter: drop-shadow(17px 19px 24px rgba(0, 0, 0, 0.13));
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.1s ease;
+    border: 2px solid transparent;
+}
+
+.lunch-card:hover{
+    border-color: red;
+    transform: scale(0.97); 
+}
+
+.lunch-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 35px;
+}
+
+.price {
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+
+.weight{
+    color: gray;
+    font-size: 17px;
+    margin-top: 15px;
+}
+
+.lunch-section button{
+    padding: 10px 30px;
+    border: none;
+    border-radius: 10px;
+    background-color: #f1eee9;
+    cursor: pointer;
+}
+
+.lunch-section button:hover  { background: #e5dfd6; }
+.lunch-section button:active { transform: scale(0.98); }
+
+/*===========================================АДАПТИВ===========================================*/
+
+/* ------------ <800px --------------------------*/
+@media (max-width: 800px) {
+
+    /* --- ОБЩЕЕ --- */
+    body {
+        margin: 0;                    
+    }
+    
+    .main-img{
+        width: 100%;
+    }
+
+    
+    nav {
+        margin-left: 0;
+        padding-right: 0;             
+        padding-bottom: 20px;
+    }
+
+    
+    footer {
+        margin: 0;                    
+        height: auto;                 
+        padding: 20px 0;
+    }
+    footer p, footer a {
+        padding: 10px 40px;           
+    }
+
+    header{
+        padding: 0 50px;
+    }
+
+    main{
+        padding: 0 50px;
+    }
+    
+    .lunch-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* ---------- <600px ---------- */
+@media (max-width: 600px) {
+
+    h1 {
+        text-align: center;
+    }
+
+    nav {
+        flex-direction: column;
+        margin-left: 0;
+        padding: 20px 0;
+        gap: 10px;
+    }
+    nav a {
+        font-size: 27px;              
+        margin: 0;                    
+    }
+
+    
+    .home .main-img {
+        width: 100%;                  
+    }
+    table {
+        font-size: 21px;              
+    }
+    th, td {
+        padding: 6px;                 
+    }
+
+    
+    footer {
+        text-align: center;
+    }
+    footer p, footer a {
+        padding: 8px 15px;
+        font-size: 18px;
+    }
+
+
+
+    .lunch-section h2 {
+        text-align: center;
+    }
+
+    .lunch-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ---------- <400px ---------- */
+@media (max-width: 400px) {
+
+    table {
+        font-size: 19px;              
+    }
+    th, td {
+        padding: 4px;
+    }
 }
