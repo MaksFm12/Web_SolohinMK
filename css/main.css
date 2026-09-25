@@ -161,6 +161,136 @@ footer p, footer a{
 .lunch-section button:hover  { background: #e5dfd6; }
 .lunch-section button:active { transform: scale(0.98); }
 
+
+
+/*===========================================ФОРМА ЗАКАЗА===================================================*/
+
+.order-section {
+    margin-bottom: 80px;
+}
+
+.order-section h2 {
+    margin-bottom: 40px;
+}
+
+
+.order-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
+.order-col h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+
+.order-section label {
+    display: block;
+    font-size: 17px;
+    margin: 18px 0 6px;
+    color: #222;
+}
+
+
+
+.order-section input[type="text"],
+.order-section input[type="email"],
+.order-section input[type="tel"],
+.order-section input[type="time"],
+.order-section select,
+.order-section textarea {
+    width: 100%;
+    padding: 8px 10px;
+    font-family: "Roboto", sans-serif;
+    font-size: 17px;
+    border: 1px solid #999;
+    border-radius: 3px;
+    background: #fff;
+    transition: border-color 0.2s ease;
+}
+
+.order-section input:focus,
+.order-section select:focus,
+.order-section textarea:focus {
+    border-color: #000;
+}
+
+
+
+
+.field-hint {
+    font-size: 15px;
+    font-style: italic;
+    color: #555;
+    margin-top: 6px;
+}
+
+
+.checkbox-row,
+.radio-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 0;
+}
+
+.checkbox-row label,
+.radio-row label {
+    display: inline;
+    margin: 0;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.checkbox-row input,
+.radio-row input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+
+.radio-group {
+    border: none;
+    padding: 0;
+    margin: 20px 0 0;
+}
+
+.radio-group legend {
+    font-size: 17px;
+    margin-bottom: 8px;
+    padding: 0;
+}
+
+
+.form-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.form-buttons button {
+    padding: 8px 30px;
+    border: 1px solid #000;
+    border-radius: 3px;
+    background: #fff;
+    font-family: "Roboto", sans-serif;
+    font-size: 17px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.form-buttons button:hover {
+    background: #f1eee9;
+}
+
+.form-buttons button:active {
+    transform: scale(0.98);
+}
+
 /*===========================================АДАПТИВ===========================================*/
 
 /* ------------ <800px --------------------------*/
@@ -203,6 +333,8 @@ footer p, footer a{
     .lunch-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    
 }
 
 
@@ -253,6 +385,28 @@ footer p, footer a{
     .lunch-grid {
         grid-template-columns: 1fr;
     }
+
+    .form-buttons {
+    flex-direction: column;
+    }
+
+    .form-buttons button {
+    width: 100%;
+    }
+
+    option{
+        font-size: 10px;
+    }
+    .order-section input[type="text"],
+.order-section input[type="email"],
+.order-section input[type="tel"],
+.order-section input[type="time"],
+.order-section select,
+.order-section textarea {
+    font-size: 10px;
+    
+}
+    
 }
 
 
@@ -265,4 +419,5 @@ footer p, footer a{
     th, td {
         padding: 4px;
     }
+    
 }
