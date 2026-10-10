@@ -161,7 +161,80 @@ footer p, footer a{
 .lunch-section button:hover  { background: #e5dfd6; }
 .lunch-section button:active { transform: scale(0.98); }
 
+/*===========================================ФИЛЬТРЫ===================================================*/
 
+.filters-container {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    margin-top: -10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Перебиваем общий стиль .lunch-section button */
+.lunch-section .filter-btn {
+    background: none;        /* Убираем серый фон по умолчанию */
+    border: none;
+    color: #4CAF50;          /* Зеленый цвет текста */
+    font-size: 17px;
+    cursor: pointer;
+    padding: 6px 16px;       /* Отступы для "таблетки" */
+    font-family: "Roboto", sans-serif;
+    border-radius: 20px;     /* Закругление */
+    transition: background-color 0.2s ease, color 0.2s ease;
+    box-shadow: none;        /* Убираем возможные тени */
+}
+
+.lunch-section .filter-btn:hover {
+    color: #2E7D32;          /* Чуть темнее при наведении */
+    background: none;        /* При наведении фон тоже не появляется */
+}
+
+/* Стиль для активной кнопки (появляется только после клика) */
+.lunch-section .filter-btn.active {
+    background-color: #d1e7d1; /* Светло-зеленый фон */
+    color: #2E7D32;            /* Темно-зеленый текст */
+    font-weight: 500;
+}
+
+/*===========================================БЛОК ЗАКАЗА===================================================*/
+
+.order-info {
+    margin-bottom: 25px;
+}
+
+.order-category {
+    margin-bottom: 15px;
+}
+
+.order-category h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.order-category p {
+    font-size: 17px;
+    margin: 0;
+}
+
+.total-price-block {
+    margin-top: 30px;
+    border-top: 1px solid #ccc;
+    padding-top: 15px;
+}
+
+.total-price-block h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.total-value {
+    font-size: 24px;
+    font-weight: 700;
+}
 
 /*===========================================ФОРМА ЗАКАЗА===================================================*/
 

@@ -1,25 +1,97 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- 1. Логика отображения меню ---
-    const sortedDishes = [...dishes].sort((a, b) => a.name.localeCompare(b.name));
-    const section = document.querySelector('.lunch-section');
-    const h2s = section.querySelectorAll('h2');
-    
-    const categories = {
-        'soup': { element: null },
-        'main': { element: null },
-        'drink': { element: null }
+    const categoriesConfig = {
+        'soup': {
+            title: 'Выберите суп',
+            filters: [
+                { label: 'рыбный', kind: 'fish' },
+                { label: 'мясной', kind: 'meat' },
+                { label: 'вегетарианский', kind: 'veg' }
+            ]
+        },
+        'main': {
+            title: 'Выберите главное блюдо',
+            filters: [
+                { label: 'рыбное', kind: 'fish' },
+                { label: 'мясное', kind: 'meat' },
+                { label: 'вегетарианское', kind: 'veg' }
+            ]
+        },
+        'salad': {
+            title: 'Выберите салат или стартер',
+            filters: [
+                { label: 'рыбный', kind: 'fish' },
+                { label: 'мясной', kind: 'meat' },
+                { label: 'вегетарианский', kind: 'veg' }
+            ]
+        },
+        'drink': {
+            title: 'Выберите напиток',
+            filters: [
+                { label: 'холодный', kind: 'cold' },
+                { label: 'горячий', kind: 'hot' }
+            ]
+        },
+        'dessert': {
+            title: 'Выберите десерт',
+            filters: [
+                { label: 'маленькая порция', kind: 'small' },
+                { label: 'средняя порция', kind: 'medium' },
+                { label: 'большая порция', kind: 'large' }
+            ]
+        }
     };
 
-    // Находим заголовки, чтобы вставить после них карточки
-    h2s.forEach(h2 => {
-        if (h2.textContent.includes('суп')) categories['soup'].element = h2;
-        if (h2.textContent.includes('главное')) categories['main'].element = h2;
-        if (h2.textContent.includes('напиток')) categories['drink'].element = h2;
-    });
+    const section = document.querySelector('.lunch-section');
+    const h2s = section.querySelectorAll('h2');
+    const sortedDishes = [...dishes].sort((a, b) => a.name.localeCompare(b.name));
 
-    for (const key in categories) {
-        const categoryData = categories[key];
-        if (!categoryData.element) continue;
+    for (const key in categoriesConfig) {
+        const config = categoriesConfig[key];
+        
+        let targetH2 = null;
+        h2s.forEach(h2 => {
+            if (h2.textContent.includes(config.title)) targetH2 = h2;
+        });
+
+        if (!targetH2) continue;
+
+        const filterContainer = document.createElement('div');
+        filterContainer.classList.add('filters-container');
+
+        config.filters.forEach(filter => {
+            const btn = document.createElement('button');
+            btn.classList.add('filter-btn');
+            btn.textContent = filter.label;
+            btn.dataset.kind = filter.kind;
+            
+            btn.addEventListener('click', () => {
+                const isActive = btn.classList.contains('active');
+                
+                filterContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                
+                if (!isActive) {
+                    btn.classList.add('active');
+                }
+                
+                const currentKind = btn.classList.contains('active') ? btn.dataset.kind : null;
+                const grid = filterContainer.nextElementSibling;
+                
+                if (grid && grid.classList.contains('lunch-grid')) {
+                    const cards = grid.querySelectorAll('.lunch-card');
+                    cards.forEach(card => {
+                        if (!currentKind || card.dataset.kind === currentKind) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                }
+            });
+
+            filterContainer.appendChild(btn);
+        });
+
+        targetH2.insertAdjacentElement('afterend', filterContainer);
 
         const grid = document.createElement('div');
         grid.classList.add('lunch-grid');
@@ -29,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = document.createElement('div');
             card.classList.add('lunch-card');
             card.setAttribute('data-dish', dish.keyword);
+            card.setAttribute('data-kind', dish.kind);
 
             card.innerHTML = `
                 <img src="${dish.image}" alt="${dish.name}" class="lunch-img">
@@ -38,7 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 <button>Добавить</button>
             `;
 
-            // Теперь слушаем клик по всей карточке
             card.addEventListener('click', () => {
                 addToOrder(dish);
             });
@@ -46,14 +118,12 @@ document.addEventListener('DOMContentLoaded', () => {
             grid.appendChild(card);
         });
 
-        categoryData.element.insertAdjacentElement('afterend', grid);
+        filterContainer.insertAdjacentElement('afterend', grid);
     }
 
-    // --- 2. Логика заказа ---
     const orderColumn = document.querySelector('.order-col');
     const orderTitle = orderColumn.querySelector('h3');
     
-    // Создаем блок для вывода выбранных блюд
     const orderInfoBlock = document.createElement('div');
     orderInfoBlock.classList.add('order-info');
     orderTitle.insertAdjacentElement('afterend', orderInfoBlock);
@@ -61,7 +131,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const orderState = {
         soup: null,
         main: null,
-        drink: null
+        salad: null,
+        drink: null,
+        dessert: null
     };
 
     function addToOrder(dish) {
@@ -78,10 +150,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const categoriesMap = {
             'soup': 'Суп',
             'main': 'Главное блюдо',
-            'drink': 'Напиток'
+            'salad': 'Салат/стартер',
+            'drink': 'Напиток',
+            'dessert': 'Десерт'
         };
 
-        if (!orderState.soup && !orderState.main && !orderState.drink) {
+        if (!Object.values(orderState).some(item => item !== null)) {
             orderInfoBlock.innerHTML = '<h3>Ничего не выбрано</h3>';
             return;
         }
@@ -118,17 +192,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // --- 3. Логика кнопки "Сбросить" ---
     const resetButton = document.querySelector('.form-buttons button[type="reset"]');
     if (resetButton) {
         resetButton.addEventListener('click', () => {
-            // Очищаем состояние корзины
-            orderState.soup = null;
-            orderState.main = null;
-            orderState.drink = null;
-            
-            // Обновляем интерфейс (очищаем список блюд)
+            for (const key in orderState) {
+                orderState[key] = null;
+            }
             updateOrderUI();
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.lunch-card').forEach(card => card.style.display = 'flex');
         });
     }
     
