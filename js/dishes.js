@@ -1,5 +1,5 @@
 const dishes = [
-    // ===== Супы (рыбный 2, мясной 2, вегетарианский 2) =====
+    // ===== СУПЫ =====
     {
         keyword: 'borsch',
         name: 'Борщ',
@@ -8,6 +8,15 @@ const dishes = [
         count: '350 г',
         image: 'https://s1.eda.ru/StaticContent/Photos/Upscaled/120131085552/171206075835/p_O.jpg',
         kind: 'veg'
+    },
+    {
+        keyword: 'borsch_meat',
+        name: 'Борщ мясной',
+        price: 350,
+        category: 'soup',
+        count: '350 г',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdCPCf8uL_AGY-uZJq_9gDksN7UNaokPn_SMtiC07a9n40zPIpoFGSPtwr&s=10',
+        kind: 'meat'
     },
     {
         keyword: 'lapsha',
@@ -19,21 +28,12 @@ const dishes = [
         kind: 'meat'
     },
     {
-        keyword: 'harcho',
-        name: 'Суп харчо',
-        price: 350,
-        category: 'soup',
-        count: '350 г',
-        image: 'https://goldniva.ru/upload/resize_cache/sprint.editor/f98/1024_768_1/ft8dsh0yp6m4fkfig6mkcjoo4jqlcl7a.jpeg',
-        kind: 'meat'
-    },
-    {
-        keyword: 'gazpacho',
+        keyword: 'gaspacho',
         name: 'Гаспачо',
         price: 195,
         category: 'soup',
         count: '350 г',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPd2akhWmo6-iEKRWPaJR23KcrLBgR2muyTTJ2uWiqtsWvOctHmjL60Ok&s=10',
+        image: 'https://goldniva.ru/upload/resize_cache/sprint.editor/f98/1024_768_1/ft8dsh0yp6m4fkfig6mkcjoo4jqlcl7a.jpeg',
         kind: 'veg'
     },
     {
@@ -46,7 +46,7 @@ const dishes = [
         kind: 'fish'
     },
     {
-        keyword: 'norwegian',
+        keyword: 'norwegian_soup',
         name: 'Норвежский суп',
         price: 270,
         category: 'soup',
@@ -55,7 +55,7 @@ const dishes = [
         kind: 'fish'
     },
 
-    // ===== Главные блюда (рыбное 2, мясное 2, вегетарианское 2) =====
+    // ===== ГЛАВНЫЕ БЛЮДА =====
     {
         keyword: 'caesar',
         name: 'Цезарь в тортилье',
@@ -75,43 +75,43 @@ const dishes = [
         kind: 'meat'
     },
     {
-        keyword: 'bowl',
-        name: 'Азиатский боул',
-        price: 510,
+        keyword: 'fish_cutlet',
+        name: 'Рыбная котлета с рисом',
+        price: 320,
+        category: 'main',
+        count: '270 г',
+        image: 'https://ku-mir.ru/images/catalog/rybnaa-kotleta-s-risom-otvarnym-518.jpg',
+        kind: 'fish'
+    },
+    {
+        keyword: 'pasta_shrimp',
+        name: 'Паста с креветками',
+        price: 340,
+        category: 'main',
+        count: '280 г',
+        image: 'https://avatars.mds.yandex.net/get-vertis-journal/4469561/0c8d635e-c64d-4a73-811c-359b244bc899.jpeg/1600x1600',
+        kind: 'fish'
+    },
+    {
+        keyword: 'pizza_margarita',
+        name: 'Пицца Маргарита',
+        price: 450,
+        category: 'main',
+        count: '470 г',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROgmJN_62eAYPbHXIZKNB3vW6KIBcBWEmDaE0zYZeejMBX-PrDF_u9o9s&s=10',
+        kind: 'veg'
+    },
+    {
+        keyword: 'veggie_bowl',
+        name: 'Вегетарианский боул',
+        price: 420,
         category: 'main',
         count: '400 г',
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgruCOeJIXxzNYGxBuJOEqydEKF9TwM3yQE2R5OdRYQpkabylBpDiNV0I&s=10',
         kind: 'veg'
     },
-    {
-        keyword: 'margherita',
-        name: 'Пицца Маргарита',
-        price: 450,
-        category: 'main',
-        count: '470 г',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzfMab60CakXs94H7a9WjJJaVFpuMwcEeW1P3Eztt_bpSkAM0xBavoVVwR&s=10',
-        kind: 'veg'
-    },
-    {
-        keyword: 'fishcutlet',
-        name: 'Рыбная котлета с рисом и спаржей',
-        price: 320,
-        category: 'main',
-        count: '270 г',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfzWo6CjXacsHH866PeouoWUlH0IEIHOhB20oADcnId-Dhnm0vkNxPQkY&s=10',
-        kind: 'fish'
-    },
-    {
-        keyword: 'shrimppasta',
-        name: 'Паста с креветками',
-        price: 340,
-        category: 'main',
-        count: '280 г',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgyz5ftdRFWQbu1DqQOGxHbfigyVjJVV_h5CoDmORf9GbMu6fdWbq1pOom&s=10',
-        kind: 'fish'
-    },
 
-    // ===== Салаты и стартеры (рыбный 1, мясной 1, вегетарианский 4) =====
+    // ===== САЛАТЫ И СТАРТЕРЫ =====
     {
         keyword: 'korean',
         name: 'Корейский салат с овощами и яйцом',
@@ -122,13 +122,22 @@ const dishes = [
         kind: 'veg'
     },
     {
-        keyword: 'chickencaesar',
+        keyword: 'caesar_salad',
         name: 'Цезарь с цыпленком',
         price: 370,
         category: 'salad',
         count: '220 г',
         image: 'https://images.gastronom.ru/LoVJjeEYXJQ3vR2Yn8WtlivB0eZ78Rtu417zEnX1mZs/pr:recipe-cover-image/g:ce/rs:auto:0:0:0/L2Ntcy9hbGwtaW1hZ2VzL2IxMzU5MzRkLWI1OTAtNDQ4Zi05MjA3LWQ5YzEzM2M2ODZlNy5qcGc.webp',
         kind: 'meat'
+    },
+    {
+        keyword: 'tuna_salad',
+        name: 'Салат с тунцом',
+        price: 480,
+        category: 'salad',
+        count: '250 г',
+        image: 'https://hoff.ru/upload/medialibrary/b53/vtu12a1ti8yi71kqcxthv0ekh0yt6hzi.jpg',
+        kind: 'fish'
     },
     {
         keyword: 'caprese',
@@ -140,16 +149,7 @@ const dishes = [
         kind: 'veg'
     },
     {
-        keyword: 'tunasalad',
-        name: 'Салат с тунцом',
-        price: 480,
-        category: 'salad',
-        count: '230 г',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbsYKNicrfcpIuGyUizFjb8EVr9G7-OfBRu29JlZPamrgdhXZgRuq2mUt1&s=10',
-        kind: 'fish'
-    },
-    {
-        keyword: 'friescaesar',
+        keyword: 'fries_caesar',
         name: 'Картофель фри с соусом Цезарь',
         price: 280,
         category: 'salad',
@@ -158,7 +158,7 @@ const dishes = [
         kind: 'veg'
     },
     {
-        keyword: 'friesketchup',
+        keyword: 'fries_ketchup',
         name: 'Картофель фри с кетчупом',
         price: 260,
         category: 'salad',
@@ -167,7 +167,7 @@ const dishes = [
         kind: 'veg'
     },
 
-    // ===== Напитки (холодный 3, горячий 3) =====
+    // ===== НАПИТКИ =====
     {
         keyword: 'fresh',
         name: 'Апельсиновый фреш',
@@ -178,21 +178,21 @@ const dishes = [
         kind: 'cold'
     },
     {
-        keyword: 'smoothie',
-        name: 'Ягодный смузи',
-        price: 350,
+        keyword: 'apple_juice',
+        name: 'Яблочный сок',
+        price: 90,
         category: 'drink',
-        count: '350 мл',
-        image: 'https://images.gastronom.ru/UGFxAYkqQdXvno7l9Ox06NuU7NZBMwIPqvgeKQvAero/pr:recipe-cover-image/g:ce/rs:auto:0:0:0/L2Ntcy9hbGwtaW1hZ2VzL2Q1ZjU2ZGY2LWE0N2EtNGJjOS04MGM5LTIyMGE4ZWYwYWJjMC5qcGc.webp',
+        count: '300 мл',
+        image: 'https://icdn.lenta.ru/images/2025/08/07/14/20250807140824734/square_320_23e0196196be54e061876be6c72c24b9.jpg',
         kind: 'cold'
     },
     {
-        keyword: 'mors',
-        name: 'Морс клюквенный',
-        price: 350,
+        keyword: 'carrot_juice',
+        name: 'Морковный сок',
+        price: 110,
         category: 'drink',
-        count: '350 мл',
-        image: 'https://trad-vkusa.ru/wp-content/uploads/2019/12/morsy-1l.jpg',
+        count: '300 мл',
+        image: 'https://s16.stc.all.kpcdn.net/family/wp-content/uploads/2022/07/morkovnyj-sok-polza-i-vred_oblogka_960-960x540.jpg',
         kind: 'cold'
     },
     {
@@ -205,50 +205,41 @@ const dishes = [
         kind: 'hot'
     },
     {
-        keyword: 'greentea',
+        keyword: 'green_tea',
         name: 'Зелёный чай',
         price: 100,
         category: 'drink',
         count: '300 мл',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1F4yjqV47h4yd8Ba-IcqcbjKNfH0VicRNoloTv8ffccXfHhb4c_MbCuU&s=10',
+        image: 'https://aumishop.ru/image/catalog/-%D0%BD%D0%BE%D0%B2%D1%8B%D0%B5-2020/polza-zelenogo-chaya.jpg',
         kind: 'hot'
     },
     {
-        keyword: 'blacktea',
+        keyword: 'black_tea',
         name: 'Чёрный чай',
         price: 90,
         category: 'drink',
         count: '300 мл',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQnU8s1NVIedbRluYXRKleFXhzp7vvugc2kP2WHuaBdQ&s=10',
+        image: 'https://здоровое-питание.рф/upload/iblock/042/2qgrd6tksvk1zm1t0tvshadic3xdze3h/-Kropotov-Lev-Fotobank-Lori-_1_.jpg',
         kind: 'hot'
     },
 
-    // ===== Десерты (маленькая порция 3, средняя 2, большая 1) =====
+    // ===== ДЕСЕРТЫ =====
     {
         keyword: 'cheesecake',
         name: 'Чизкейк',
         price: 240,
         category: 'dessert',
         count: '125 г',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTnT-v58_bXo6gjMoJeEpkdAULnwvVMtWIH6a2Dw_OxQ&s=10',
+        image: 'https://art-lunch.ru/content/uploads/2014/08/cheesecake-new-york-001x2-1.jpg',
         kind: 'small'
     },
     {
-        keyword: 'chocolatecheesecake',
+        keyword: 'choco_cheesecake',
         name: 'Шоколадный чизкейк',
         price: 260,
         category: 'dessert',
         count: '125 г',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8R3c_U1XX6Vc4HVUPK3k3jjXrQVY_8LPNFKpUHLC4bQ&s=10',
-        kind: 'small'
-    },
-    {
-        keyword: 'donuts3',
-        name: 'Пончики (3 штуки)',
-        price: 410,
-        category: 'dessert',
-        count: '270 г',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmWbkRz0qLEvCPoJRelJ3WvlFzPjUVIlXeyZ1FZNOWfw&s=10',
+        image: 'https://s1.eda.ru/StaticContent/Photos/Upscaled/120420200719/120424122615/p_O.jpg',
         kind: 'small'
     },
     {
@@ -257,25 +248,34 @@ const dishes = [
         price: 220,
         category: 'dessert',
         count: '300 г',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhum0HIhqENWn67YrF-YyKi_rYizRgw4ijMz-ZlHcKxszcJfvxypk6Xac&s=10',
+        image: 'https://menunedeli.ru/wp-content/uploads/2015/09/16-kl-pahlava.jpg',
         kind: 'medium'
     },
     {
-        keyword: 'chocolatecake',
+        keyword: 'choco_cake',
         name: 'Шоколадный торт',
         price: 270,
         category: 'dessert',
-        count: '250 г',
-        image: 'https://craftology.ru/upload/resize_cache/iblock/c26/370_370_1/rdljsqu31bc3jna7fe3xj89tm9y2sgzc.jpg',
+        count: '140 г',
+        image: 'https://www.vkusnyblog.com/wp-content/uploads/2018/01/shokoladnyi-shokoladnyi-tort.jpg',
         kind: 'medium'
     },
     {
-        keyword: 'donuts6',
-        name: 'Пончики (6 штук)',
-        price: 720,
+        keyword: 'donuts_3',
+        name: 'Пончики (3 штуки)',
+        price: 410,
         category: 'dessert',
-        count: '540 г',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6K8xwB60ploiahjx46MXg0xwoQuIdeKjXQnicxdKZ4rpd7KdznZd8Tsg&s=10',
+        count: '350 г',
+        image: 'https://ir.ozone.ru/s3/multimedia-5/c1000/6326767181.jpg',
+        kind: 'medium'
+    },
+    {
+        keyword: 'donuts_6',
+        name: 'Пончики (6 штук)',
+        price: 650,
+        category: 'dessert',
+        count: '700 г',
+        image: 'https://content2.flowwow-images.com/data/flowers/1000x1000/83/1787621351_39971283.jpg',
         kind: 'large'
     }
 ];
