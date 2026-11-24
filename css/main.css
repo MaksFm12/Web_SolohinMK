@@ -163,6 +163,33 @@ footer p, footer a{
 
 
 
+/*===========================================ФИЛЬТРЫ===================================================*/
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.lunch-section .filter-btn {
+    padding: 4px 14px;
+    background: transparent;
+    color: #0a7a2f;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.lunch-section .filter-btn:hover {
+    background: #e6f4ea;
+}
+
+.lunch-section .filter-btn.active {
+    background: #cfeedb;
+}
+
+
 /*===========================================ФОРМА ЗАКАЗА===================================================*/
 
 .order-section {

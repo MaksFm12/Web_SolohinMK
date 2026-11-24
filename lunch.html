@@ -18,10 +18,54 @@
     </header>
     <main>
         <section class="lunch-section">
-            <!-- Сюда скрипт автоматически вставит карточки блюд -->
-            <h2>Выберите суп</h2>
-            <h2>Выберите главное блюдо</h2>
-            <h2>Выберите напиток</h2>
+            <div class="lunch-category" data-category="soup">
+                <h2>Выберите суп</h2>
+                <div class="filters">
+                    <button type="button" class="filter-btn" data-kind="fish">рыбный</button>
+                    <button type="button" class="filter-btn" data-kind="meat">мясной</button>
+                    <button type="button" class="filter-btn" data-kind="veg">вегетарианский</button>
+                </div>
+                <!-- Сюда скрипт вставит карточки блюд -->
+            </div>
+
+            <div class="lunch-category" data-category="main">
+                <h2>Выберите главное блюдо</h2>
+                <div class="filters">
+                    <button type="button" class="filter-btn" data-kind="fish">рыбное</button>
+                    <button type="button" class="filter-btn" data-kind="meat">мясное</button>
+                    <button type="button" class="filter-btn" data-kind="veg">вегетарианское</button>
+                </div>
+                <!-- Сюда скрипт вставит карточки блюд -->
+            </div>
+
+            <div class="lunch-category" data-category="salad">
+                <h2>Выберите салат или стартер</h2>
+                <div class="filters">
+                    <button type="button" class="filter-btn" data-kind="fish">рыбный</button>
+                    <button type="button" class="filter-btn" data-kind="meat">мясной</button>
+                    <button type="button" class="filter-btn" data-kind="veg">вегетарианский</button>
+                </div>
+                <!-- Сюда скрипт вставит карточки блюд -->
+            </div>
+
+            <div class="lunch-category" data-category="drink">
+                <h2>Выберите напиток</h2>
+                <div class="filters">
+                    <button type="button" class="filter-btn" data-kind="cold">холодный</button>
+                    <button type="button" class="filter-btn" data-kind="hot">горячий</button>
+                </div>
+                <!-- Сюда скрипт вставит карточки блюд -->
+            </div>
+
+            <div class="lunch-category" data-category="dessert">
+                <h2>Выберите десерт</h2>
+                <div class="filters">
+                    <button type="button" class="filter-btn" data-kind="small">маленькая порция</button>
+                    <button type="button" class="filter-btn" data-kind="medium">средняя порция</button>
+                    <button type="button" class="filter-btn" data-kind="large">большая порция</button>
+                </div>
+                <!-- Сюда скрипт вставит карточки блюд -->
+            </div>
         </section>
 
 
