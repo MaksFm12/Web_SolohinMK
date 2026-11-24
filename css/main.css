@@ -392,6 +392,98 @@ footer p, footer a{
 
 
 
+/*===========================================КОМБО===================================================*/
+
+.combo-section h2 {
+    font-weight: 700;
+    font-size: 30px;
+    text-align: center;
+}
+
+.combo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);   /* 3 колонки в строке */
+    gap: 40px 20px;
+    margin-bottom: 80px;
+}
+
+.combo {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.combo-item {
+    display: flex;
+    flex-direction: column;                  /* сверху вниз: картинка, подпись */
+    align-items: center;
+    text-align: center;
+}
+
+.combo-icon {
+    display: inline-block;                   /* нужно, чтобы работал transform */
+    font-size: 52px;
+    line-height: 1.2;
+    cursor: default;
+    transition: transform 0.2s ease;
+}
+
+.combo-icon:hover {
+    transform: translateY(-8px) scale(1.2);
+}
+
+.combo-item p {
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+/* информация о десерте: шрифт меньше, чем у подписи */
+.combo-item p.combo-note {
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 2px;
+}
+
+/*===========================================УВЕДОМЛЕНИЕ===================================================*/
+
+.notification {
+    position: fixed;                         /* не двигается при прокрутке */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);        /* центр по вертикали и горизонтали */
+    z-index: 1000;                           /* поверх остальных элементов */
+    width: min(90%, 400px);
+    padding: 40px 30px;
+    background: #fff;
+    border: 1px solid #000;
+    text-align: center;
+}
+
+.notification p {
+    font-size: 22px;
+    margin-bottom: 30px;
+}
+
+.notification button {
+    padding: 10px 35px;
+    font-size: 20px;
+    font-family: "Roboto", sans-serif;
+    background: #fff;
+    color: #000;
+    border: 1px solid #000;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.notification button:hover {
+    background: #000;
+    color: #fff;
+}
+
+
+
 /*===========================================АДАПТИВ===========================================*/
 
 /* ------------ <800px --------------------------*/
@@ -432,6 +524,10 @@ footer p, footer a{
     }
     
     .lunch-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .combo-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -484,6 +580,10 @@ footer p, footer a{
     }
 
     .lunch-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .combo-grid {
         grid-template-columns: 1fr;
     }
 

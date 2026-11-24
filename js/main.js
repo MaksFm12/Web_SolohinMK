@@ -145,5 +145,79 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- 4. Проверка комбо при отправке формы ---
+    const orderForm = document.querySelector('.order-form');
+    const submitButton = orderForm.querySelector('button[type="submit"]');
+
+    // Возвращает текст уведомления или null, если состав заказа корректен
+    function checkCombo() {
+        const soup    = !!orderState.soup;
+        const main    = !!orderState.main;
+        const salad   = !!orderState.salad;
+        const drink   = !!orderState.drink;
+        const dessert = !!orderState.dessert;
+
+        // Ничего не выбрано
+        if (!soup && !main && !salad && !drink && !dessert) {
+            return 'Ничего не выбрано. Выберите блюда для заказа';
+        }
+
+        // Допустимые комбо: суп+главное+салат+напиток, суп+главное+напиток,
+        // суп+салат+напиток, главное+салат+напиток, главное+напиток
+        // (десерт можно добавить к любому)
+        const hasBase = main || (soup && salad);
+        if (hasBase && drink) return null;
+
+        // Всё есть, кроме напитка
+        if (hasBase && !drink) return 'Выберите напиток';
+
+        // Суп без главного/салата
+        if (soup && !main && !salad) return 'Выберите главное блюдо/салат/стартер';
+
+        // Салат без супа/главного
+        if (salad && !soup && !main) return 'Выберите суп или главное блюдо';
+
+        // Только напиток и/или десерт
+        return 'Выберите главное блюдо';
+    }
+
+    function showNotification(text) {
+        // Не допускаем дублей
+        document.querySelector('.notification')?.remove();
+
+        const notification = document.createElement('div');
+        notification.classList.add('notification');
+
+        const message = document.createElement('p');
+        message.textContent = text;
+
+        const okButton = document.createElement('button');
+        okButton.type = 'button';
+        okButton.textContent = 'Окей 👌';
+        okButton.addEventListener('click', () => notification.remove());
+
+        notification.append(message, okButton);
+        document.body.appendChild(notification);
+    }
+
+    // Проверяем по клику на «Отправить» — раньше встроенной валидации полей,
+    // поэтому уведомление появляется даже при пустых полях (как на макете)
+    submitButton.addEventListener('click', (event) => {
+        const error = checkCombo();
+        if (error) {
+            event.preventDefault();          // форма не отправляется
+            showNotification(error);
+        }
+    });
+
+    // Подстраховка на случай отправки другим способом
+    orderForm.addEventListener('submit', (event) => {
+        const error = checkCombo();
+        if (error) {
+            event.preventDefault();
+            showNotification(error);
+        }
+    });
+
     updateOrderUI();
 });
